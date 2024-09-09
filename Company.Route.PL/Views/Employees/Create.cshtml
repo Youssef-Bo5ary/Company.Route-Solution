@@ -1,0 +1,24 @@
+﻿@model Employee
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create Employee Page</h1>
+<br />
+<br />
+<form asp-action="Create">
+   
+    <partial name="PartialViews/EditCreateEmployeePartialView" model="Model" />
+    <br />
+    <br />@*to space between two paragraphs*@
+    <input type="submit" value="Create" class="btn btn-primary"/>
+    <a asp-action="Index" class="btn btn-light">Back To List</a>
+
+</form>
+@section Hamada
+{
+<script src="<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>">
+}
+
+
