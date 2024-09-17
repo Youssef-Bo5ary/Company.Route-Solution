@@ -1,6 +1,7 @@
 ﻿using Company.Route.BLL.Interfaces;
 using Company.Route.DAL.Data.Contexts;
 using Company.Route.DAL.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,10 +47,9 @@ namespace Company.Route.BLL.Repositories
             return _context.SaveChanges();
         }
 
-       
-
-      
-
-       
+        public IEnumerable<Employee> GetByName(string name)
+        {
+          return  _context.Employees.Where(E => E.Name.ToLower().Contains(name.ToLower())).Include(E=>E.Department).ToList();
+        }
     }
 }

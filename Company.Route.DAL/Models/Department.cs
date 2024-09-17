@@ -18,5 +18,7 @@ namespace Company.Route.DAL.Models
         public string Name { get; set; }
         [DisplayName("Date of Creation")] //display it in DB
         public DateTime DateOfCreation { get; set; }
+        public ICollection<Employee>? Employees { get; set; }
+
     }
 }

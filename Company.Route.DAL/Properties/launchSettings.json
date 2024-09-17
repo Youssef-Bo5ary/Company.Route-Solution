@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "Profile 1": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Users\\youusseff\\Documents\\IISExpress\\config\\redirection.config"
+    },
+    "Profile 2": {
+      "commandName": "Project"
+    }
+  }
+}

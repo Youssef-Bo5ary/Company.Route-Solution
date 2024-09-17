@@ -4,10 +4,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Company.Route.PL", "Company.Route.PL\Company.Route.PL.csproj", "{7E470D4B-6F22-4A91-B10E-F8063FADA927}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0E44CE60-4F09-4495-9A33-98967A06ACC9} = {0E44CE60-4F09-4495-9A33-98967A06ACC9}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Company.Route.DAL", "Company.Route.DAL\Company.Route.DAL.csproj", "{0E44CE60-4F09-4495-9A33-98967A06ACC9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Company.Route.DAL", "Company.Route.DAL\Company.Route.DAL.csproj", "{0E44CE60-4F09-4495-9A33-98967A06ACC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Company.Route.BLL", "Company.Route.BLL\Company.Route.BLL.csproj", "{2F9FF52D-8E00-4797-9E39-16F8D8153E1A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Company.Route.BLL", "Company.Route.BLL\Company.Route.BLL.csproj", "{2F9FF52D-8E00-4797-9E39-16F8D8153E1A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

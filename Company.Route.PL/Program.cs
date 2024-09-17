@@ -1,5 +1,9 @@
+using Company.Route.BLL;
+using Company.Route.BLL.Interfaces;
 using Company.Route.BLL.Repositories;
 using Company.Route.DAL.Data.Contexts;
+using Company.Route.PL.Mapping;
+using Company.Route.PL.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace Company.Route.PL
@@ -24,6 +28,19 @@ namespace Company.Route.PL
 
            builder.Services.AddScoped<DepartmentRepository>();//Allow Dependancy Injection for Department Repository
             builder.Services.AddScoped<EmployeeRepository>();
+
+            builder.Services.AddAutoMapper(typeof(EmployeeProfile));
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            ////Life time
+            //builder.Services.AddScoped<IScopedService, ScopedService>();//per Request               //Dependency Injection
+            //builder.Services.AddTransient<ITransientService, TransientService>();//per Operation    //Dependency Injection
+            //builder.Services.AddSingleton<ISingletonService, SingletonService>();//per App          //Dependency Injection
+
+
+
+
+
 
             var app = builder.Build();
 

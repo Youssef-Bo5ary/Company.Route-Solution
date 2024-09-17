@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,6 +31,10 @@ namespace Company.Route.DAL.Models
         public bool IsDeleted { get; set; }
         public DateTime HiringDate { get; set; }
         public DateTime DateOfCreation { get; set; }= DateTime.Now;
+
+        [ForeignKey("Department")]
+        public int? DeptId { get; set; }//FK
+        public Department? Department {  get; set; }//navigational property
 
     }
 }
