@@ -2,6 +2,7 @@
 using Company.Route.BLL.Interfaces;
 using Company.Route.BLL.Repositories;
 using Company.Route.DAL.Models;
+using Company.Route.PL.Helpers;
 using Company.Route.PL.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.DotNet.Scaffolding.Shared.Messaging;
@@ -75,6 +76,10 @@ namespace Company.Route.PL.Controllers
         {
             if (ModelState.IsValid)//match required condition I put on data in class Dep
             {
+                //to upload Image
+                model.ImageName = DocumentSetting.UploadFile(model.Image, "images");
+
+
                 // Casting : EmployeeViewModel => Employee
                 //Manual Mapping
                 #region Manual Mapping 
@@ -102,6 +107,7 @@ namespace Company.Route.PL.Controllers
                 var Count = _unitOfWork.EmployeeRepository.Add(employee);
                 if (Count > 0)
                 {
+                   
                     TempData["Message"] = "Employee is created successfully";
                    
                 }
@@ -129,28 +135,41 @@ namespace Company.Route.PL.Controllers
         public IActionResult Edit(int? id)
         {
             if (id is null) return BadRequest();
+            
             var dep = _unitOfWork.EmployeeRepository.Get(id.Value);
             if (dep == null)
             {
                 return NotFound();
             }
+            var Result = _mapper.Map<EmployeeViewModel>(dep);
             var department = _unitOfWork.DepartmentRepository.GetAll();//extra information
             //after I want to Send Message from this action to create view by ViewData
             //View Dictionary
             ViewData["Department"] = department;
             
-            return View(dep);
+            return View(Result);
         }
-        [HttpPost]
+
+
+       [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit([FromRoute] int? id, EmployeeViewModel model)
         {
             try
             {
+               
+
+
                 if (id != model.Id) return BadRequest();//400
                
                 if (ModelState.IsValid)
                 {
+                    if (model.ImageName is not null)
+                    {
+                        DocumentSetting.DeleteFile(model.ImageName, "images");
+                    }
+                    model.ImageName = DocumentSetting.UploadFile(model.Image, "images");
+
                     var employee = _mapper.Map<Employee>(model);
                     var result = _unitOfWork.EmployeeRepository.Update(employee);
                     if (result > 0)

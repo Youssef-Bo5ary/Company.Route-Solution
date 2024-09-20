@@ -30,5 +30,7 @@ namespace Company.Route.PL.ViewModels
        
         public int? DeptId { get; set; }//FK
         public Department? Department { get; set; }//navigational property
+        public IFormFile? Image { get; set; }
+        public string? ImageName { get; set; }
     }
 }

@@ -2,8 +2,10 @@ using Company.Route.BLL;
 using Company.Route.BLL.Interfaces;
 using Company.Route.BLL.Repositories;
 using Company.Route.DAL.Data.Contexts;
+using Company.Route.DAL.Models;
 using Company.Route.PL.Mapping;
 using Company.Route.PL.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Company.Route.PL
@@ -31,6 +33,9 @@ namespace Company.Route.PL
 
             builder.Services.AddAutoMapper(typeof(EmployeeProfile));
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+                           .AddEntityFrameworkStores<AppDbContext>();
 
             ////Life time
             //builder.Services.AddScoped<IScopedService, ScopedService>();//per Request               //Dependency Injection
